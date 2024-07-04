@@ -1,4 +1,4 @@
-# How to create an Ethereum PoA private network
+# How to connect to the FidesInnova blockchain
 ## 1- Main Node (Miner)
 ### Install geth
 Install ethereum V1.13.x
@@ -91,7 +91,7 @@ Open a `screen` to run the node in background:
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock 0xdf8b5d6b5662c3acf6b32803c9ca77ce813db9cd --password "fides_blockchain/password.sec" --mine --miner.etherbase 0xdf8b5d6b5662c3acf6b32803c9ca77ce813db9cd console 2> "geth.log"
 ```
 
-## 2- Second Node
+## 2- Second Node (optional)
 ### Install geth
 Install ethereum V1.13.x
 copy the URL for your system from https://geth.ethereum.org/downloads
@@ -304,7 +304,7 @@ systemctl restart nginx
 
 
 
-# Blockscout
+# Blockscout (optional)
 ## Basic Program Installation
 ```
 sudo apt-get update && sudo apt-get upgrade
