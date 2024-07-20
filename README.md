@@ -148,7 +148,7 @@ geth --datadir fides_blockchain init genesis.json
 
 Open a `screen` to run the node in background:
 ```
-geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "admin,debug,web3,eth,txpool,personal,clique,miner,net,network" --ws.api "eth,net,web3,network,debug,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*"  console 2> "geth.log"
+geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "admin,debug,web3,eth,txpool,personal,clique,miner,net,network" --ws.api "eth,net,web3,network,debug,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
 
 ```
 
