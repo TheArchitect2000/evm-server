@@ -92,9 +92,9 @@ geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.i
 ```
 
 ### Connect Nodes
-In the second node geth console, enter the enode address of the main node
+In the node geth console, enter the enode address of the main node like: `admin.addPeer("enode/path@ip:port")`
 ```
-admin.addPeer("enode/path@ip:port")
+admin.addPeer("enode://ce6b1cf8eff1940f5d4599bd76ec95252110e8dd8d88843c9ba6fc7d9283ba4b2433ebe33b699ecb590fe1326945ce284b925f092b6167822bc0c4bbcca42bfd@65.108.196.41:3000")
 ```
 ## Useful Commands
 ```
