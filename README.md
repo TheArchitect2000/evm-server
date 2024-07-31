@@ -75,21 +75,34 @@ Copy and paste the file content from below and then edit the genesis
 ```
 _chainId_: 706883 is FidesInnova chain ID.
 _period_: Block time in seconds
-_extradata_: To encode the signer addresses in extradata, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.
-- If you are a Node owner, contact FidesInnova team at info@fidesinnova.io to add your wallet address into the genesys file.
+_extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.
+- If you are a Node owner, contact FidesInnova team at info@fidesinnova.io to add your wallet address to the genesis file.
   
 _alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block
 
-
-### Start the Blockchain
+### Syncing the Blockchain
+#### Start the Blockchain
 ```
 geth --datadir fides_blockchain init genesis.json
 ```
+#### Use this command to start syncing with the blockchain
+```
+geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "web3,eth,txpool,personal,net,network" --ws.api "eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
+```
 
+#### In the node geth console, enter the enode address of the main node like: `admin.addPeer("enode/path@ip:port")`
+```
+admin.addPeer("enode://ce6b1cf8eff1940f5d4599bd76ec95252110e8dd8d88843c9ba6fc7d9283ba4b2433ebe33b699ecb590fe1326945ce284b925f092b6167822bc0c4bbcca42bfd@65.108.196.41:3000")
+```
+
+#### To check the syncing process use: `eth.syncing` and `eth.blockNumber` .
+#### After the node synced the blockchain, use `exit` to stop the blockchain node and then start the miner
+### Start the Miner
 Open a `screen` to run the node in background:
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock 0xdf8b5d6b5662c3acf6b32803c9ca77ce813db9cd --password "fides_blockchain/password.sec" --mine --miner.etherbase 0xdf8b5d6b5662c3acf6b32803c9ca77ce813db9cd console 2> "geth.log"
 ```
+*  make sure to replace your **wallet address** in the command.
 
 ### Connect Nodes
 In the node geth console, enter the enode address of the main node like: `admin.addPeer("enode/path@ip:port")`
