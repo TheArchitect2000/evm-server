@@ -889,9 +889,11 @@ NEXT_PUBLIC_WEB3_DISABLE_ADD_TOKEN_TO_WALLET=false
 
 ## Build and run the Blockscout
 ```
+cd ~/blockscout/docker-compose/
 docker compose -f docker-compose.yml up --build -d
 ```
 To stop it use
 ```
+cd ~/blockscout/docker-compose/
 docker compose -f docker-compose.yml down
 ```
