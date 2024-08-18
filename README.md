@@ -13,7 +13,7 @@
 <a href="https://discord.com/invite/NQdM6JGwcs" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
 <a href="https://twitter.com/FidesInnova" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 
-### Connecting to the FidesInnova blockchain involves setting up a node, configuring it to interact with the network, and using the appropriate libraries or tools to communicate with the blockchain. Below is a step-by-step guide to help you connect to the FidesInnova blockchain.
+Connecting to the FidesInnova blockchain involves setting up a node, configuring it to interact with the network, and using the appropriate libraries or tools to communicate with the blockchain. Below is a step-by-step guide to help you connect to the FidesInnova blockchain.
 
 
 
