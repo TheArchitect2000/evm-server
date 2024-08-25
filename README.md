@@ -136,6 +136,7 @@ apt install screen
 screen -d
 screen -r
 admin.nodeInfo
+clique.propose(address, true)
 
 ```
 
