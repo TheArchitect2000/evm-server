@@ -96,10 +96,10 @@ Copy and paste the file content from below and then edit the genesis
 _chainId_: 706883 is FidesInnova chain ID.
 _period_: Block time in seconds
 _extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.
-
-Note: If you are a Node owner, contact Fidesinnova team at info@fidesinnova.io to add your wallet address to the genesis file.
-  
 _alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block
+
+<b> Note: If you are a Node owner, contact Fidesinnova team at info@fidesinnova.io to add your wallet address to the genesis file.</b>
+  
 
 ### 1-4 Syncing the Blockchain
 #### 1-4-1 Start the Blockchain
@@ -215,7 +215,7 @@ admin.nodeInfo
 ```
 
 ## 3- Setting Up nginx (Optional)
- Note: This section is only required if you want to create your own second node with global RPC access.
+<b> Note: This section is only required if you want to create your own second node with global RPC access.</b>
 
 ### 3-1- Install nginx
 
