@@ -370,6 +370,7 @@ systemctl restart nginx
 
 
 ## 4- Blockscout (optional)
+<b> Note: This section is only required if you want to use your own blockchain explorer.</b>
 
 ### 4-1 Basic Program Installation
 ```
