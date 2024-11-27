@@ -93,10 +93,10 @@ Copy and paste the file content from below and then edit the genesis
   }
 }
 ```
-_chainId_: 706883 is FidesInnova chain ID.
-_period_: Block time in seconds
-_extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.
-_alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block
+_chainId_: 706883 is FidesInnova chain ID.<br>
+_period_: Block time in seconds.<br>
+_extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.<br>
+_alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
 
 <b> Note: If you are a Node owner, contact Fidesinnova team at info@fidesinnova.io to add your wallet address to the genesis file.</b>
   
@@ -135,7 +135,7 @@ Open a `screen` to run the node in background:
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock 0xdf8b5d6b5662c3acf6b32803c9ca77ce813db9cd --password "fides_blockchain/password.sec" --mine --miner.etherbase 0xdf8b5d6b5662c3acf6b32803c9ca77ce813db9cd console 2> "geth.log"
 ```
-*  make sure to replace your **wallet address** in the command.
+<b> Make sure to replace your **wallet address** in the command.</b>
 
 ### 1-6 Connect to Peer Nodes in Fidesinnova Blockchain
 In the node geth console, enter the enode address of the main node like: `admin.addPeer("enode/path@ip:port")`
@@ -366,7 +366,7 @@ systemctl restart nginx
 ```
 
 
-# 4- Blockscout (optional)
+## 4- Blockscout (optional)
 
 ### 4-1 Basic Program Installation
 ```
