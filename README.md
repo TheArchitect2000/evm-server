@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://fidesonnova.io/" target="blank"><img src="https://fidesinnova.io/Download/logo/g-c-evm.png" /></a>
+  <a href="https://fidesinnova.io/" target="blank"><img src="https://fidesinnova.io/Download/logo/g-c-evm.png" /></a>
 </p>
 
 
