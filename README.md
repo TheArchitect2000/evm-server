@@ -146,16 +146,6 @@ In the node geth console, enter the enode address of the main node like: `admin.
 admin.addPeer("enode://ce6b1cf8eff1940f5d4599bd76ec95252110e8dd8d88843c9ba6fc7d9283ba4b2433ebe33b699ecb590fe1326945ce284b925f092b6167822bc0c4bbcca42bfd@65.108.196.41:3000")
 ```
 
-## Useful Commands (optional)
-```
-apt update
-apt install screen
-screen -d
-screen -r
-admin.nodeInfo
-clique.propose(address, true)
-```
-
 ## 2- Second Node (optional)
 ### 2-1 Install geth
 Install ethereum V1.13.x
@@ -189,7 +179,46 @@ The output should look like this:
 `Public address of the key:   0xfBDfF421004493e13A4a69394c3b98f1e44C9874
 Path of the secret key file: fides_blockchain/keystore/UTC--2024-02-27T16-17-52.880254508Z--fbdff421004493e13a4a69394c3b98f1e44c9874`
 
-### 2-3 Copy the genesis file from the **Main Node** in the root path
+### 2-3 Create the genesis file
+```
+cd ~/
+sudo nano genesis.json
+```
+Copy and paste the file content from below and then edit the genesis
+```
+{
+  "config": {
+    "chainId": 706883,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "clique": {
+      "period": 4,
+      "epoch": 7500
+    }
+  },
+  "difficulty": "1",
+  "gasLimit": "8000000",
+
+  "extradata": "0x0000000000000000000000000000000000000000000000000000000000000000df8b5d6b5662c3acf6b32803c9ca77ce813db9cd0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "alloc": {
+    "df8b5d6b5662c3acf6b32803c9ca77ce813db9cd": {
+      "balance": "1000000000000000000000000000"
+    }
+  }
+}
+```
+_chainId_: 706883 is FidesInnova chain ID.<br>
+
+_period_: Block time in seconds.<br>
+
+_extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.<br>
+
+_alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
 
 ### 2-4 Start the Blockchain
 ```
@@ -206,15 +235,6 @@ In the second node geth console, enter the enode address of the main node by thi
 
 ```
 admin.addPeer("enode://ce6b1cf8eff1940f5d4599bd76ec95252110e8dd8d88843c9ba6fc7d9283ba4b2433ebe33b699ecb590fe1326945ce284b925f092b6167822bc0c4bbcca42bfd@65.108.196.41:3000")
-```
-## Useful Commands (optional)
-```
-apt update
-apt install screen
-screen -d
-screen -r
-admin.nodeInfo
-
 ```
 
 ## 3- Setting Up nginx (Optional)
@@ -315,21 +335,22 @@ http {
 
 		location ^~ / {
 			add_header Access-Control-Allow-Origin *;
-        	add_header Access-Control-Allow-Headers *;
-
+        	        add_header Access-Control-Allow-Headers *;
 			proxy_pass http://127.0.0.1:8545/;
 		}
 	}
+}
+```
 
-
+<!---
 	server {
 		listen 443 ssl;
 		listen [::]:443 ssl;
-        server_name fidesf1-explorer.fidesinnova.io;
+                server_name <INSERT_YOUR_BLOCK_EXPLORER_URL>;
 
         location ^~ /{
 			add_header Access-Control-Allow-Origin *;
-        	add_header Access-Control-Allow-Headers *;
+        	        add_header Access-Control-Allow-Headers *;
 
 			proxy_http_version    1.1;
 			proxy_set_header      Host "$host";
@@ -343,10 +364,9 @@ http {
     	}
 
 	}
+--->
 
 
-}
-```
 
 ### 3-2 How to take SSL by certbot 
 ```
@@ -354,9 +374,11 @@ sudo apt-get update
 sudo apt-get install certbot
 sudo certbot certonly --standalone --preferred-challenges http
 ```
-For URLs write `fidesf1-rpc.fidesinnova.io fidesf1-explorer.fidesinnova.io`
+<b> Then enter your URL like: `fidesf1-rpc.fidesinnova.io` </b>
 
-
+<!---
+<b> Then enter your URL like: `fidesf1-rpc.fidesinnova.io fidesf1-explorer.fidesinnova.io` </b>
+--->
 
 ### 3-3 Start nginx
 Test nginx config
@@ -368,6 +390,19 @@ And then use systemctl to start nginx
 systemctl restart nginx
 ```
 
+## Useful Commands (optional)
+```
+apt update
+apt install screen
+screen -d
+screen -r
+admin.nodeInfo
+clique.propose(address, true)
+```
+
+
+
+<!---
 
 ## 4- Blockscout (optional)
 <b> Note: This section is only required if you want to use your own blockchain explorer.</b>
@@ -936,3 +971,4 @@ To stop it use
 cd ~/blockscout/docker-compose/
 docker compose -f docker-compose.yml down
 ```
+--->
