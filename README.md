@@ -137,7 +137,7 @@ exit
 Open a `screen` to run the node in background:<br>
 <b>Note: Make sure to replace your **wallet address** in the command.</b>
 ```
-geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock 0xdf8b5d6b5662c3acf6b32803c9ca77ce813db9cd --password "fides_blockchain/password.sec" --mine --miner.etherbase 0xdf8b5d6b5662c3acf6b32803c9ca77ce813db9cd console 2> "geth.log"
+geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
 ```
 
 ### 1-6 Connect to Peer Nodes in Fidesinnova Blockchain
