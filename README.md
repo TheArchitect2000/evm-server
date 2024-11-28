@@ -283,8 +283,8 @@ http {
 	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
 	ssl_prefer_server_ciphers on;
     
-	ssl_certificate  /etc/letsencrypt/live/fidesf1-rpc.fidesinnova.io/fullchain.pem;
-	ssl_certificate_key  /etc/letsencrypt/live/fidesf1-rpc.fidesinnova.io/privkey.pem;
+	ssl_certificate  /etc/letsencrypt/live/<INSERT_YOUR_RPC_URL>/fullchain.pem;
+	ssl_certificate_key  /etc/letsencrypt/live/<INSERT_YOUR_RPC_URL>/privkey.pem;
 
 
 	##
@@ -317,7 +317,7 @@ http {
 	server {
 		listen 443 ssl;
 		listen [::]:443 ssl;
-        server_name fidesf1-rpc.fidesinnova.io;
+                server_name <INSERT_YOUR_RPC_URL>;
 
 		location ^~ /ws {
 			add_header Access-Control-Allow-Origin *;
