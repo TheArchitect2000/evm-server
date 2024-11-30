@@ -119,15 +119,21 @@ geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.i
 admin.addPeer("enode://ce6b1cf8eff1940f5d4599bd76ec95252110e8dd8d88843c9ba6fc7d9283ba4b2433ebe33b699ecb590fe1326945ce284b925f092b6167822bc0c4bbcca42bfd@65.108.196.41:3000")
 ```
 
-#### 1-4-4 To check the syncing process
+#### 1-4-4 Verify Block Progress
+Open the Geth console and use the following command:
 ```
 eth.syncing
 ```
+Note: When the node is not synchronized, it returns false, and when it is fully synchronized, it returns true.
+
+#### 1-4-5 Check Syncing Status
+To track the number of blocks your node has synced, run:
 ```
 eth.blockNumber
 ```
+Note: This command displays the current synchronized block number on your node, providing progress information about the synchronization process.
 
-#### 1-4-5 After the node synced the blockchain
+#### 1-4-6 After the node synced the blockchain
 Use this command to stop the blockchain node and then start the miner.
 ```
 exit
