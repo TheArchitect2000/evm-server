@@ -133,7 +133,7 @@ eth.blockNumber
 ```
 Note: This command displays the current synchronized block number on your node, providing progress information about the synchronization process.
 
-#### 1-4-6 After the node synced the blockchain
+#### 1-4-6 After the node synced with the blockchain
 Use this command to stop the blockchain node and then start the miner.
 ```
 exit
