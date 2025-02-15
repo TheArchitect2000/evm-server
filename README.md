@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://fidesinnova.io/" target="blank"><img src="g-c-evm.png" /></a>
+  <a href="https://fidesinnova.io/" target="blank"><img src="g-c-web-back.png" /></a>
 </p>
 
 
