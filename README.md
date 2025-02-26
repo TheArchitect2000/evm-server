@@ -17,7 +17,7 @@ To connect to the FidesInnova blockchain, you need to set up a node, configure i
 <p><b>Validator Node:</b> Actively participates in the consensus mechanism by validating transactions and securing the network.</p>
 
 
-## 1- Fidesinnova Blockchain Node (General Node)
+## 1- Fidesinnova Blockchain Node (General Node) - RPC Provider
 ### 1-1 Install geth
 Install ethereum V1.13.x
 copy the URL for your system from https://geth.ethereum.org/downloads
@@ -107,7 +107,7 @@ In the second node geth console, enter the enode address of the main node by thi
 admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
 ```
 
-## 2- Fidesinnova Blockchain Node (Validator Node)
+## 2- Fidesinnova Blockchain Node (Validator Node) - Block Producer
 ### 2-1- Install geth
 Install ethereum V1.13.x
 copy the URL for your system from https://geth.ethereum.org/downloads
