@@ -112,15 +112,15 @@ Install ethereum V1.13.x
 copy the URL for your system from https://geth.ethereum.org/downloads
 
 ```
-cd /root
 wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.13.15-c5ba367e.tar.gz
 tar -xvf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
 cd geth-linux-amd64-1.13.15-c5ba367e
 chmod +x geth
-cp geth /usr/local/bin/
+sudo cp geth /usr/local/bin/
 geth version
 rm -rf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
 ```
+Version 1.13 is only for PoA
 Version 1.14 is only for PoS
 ```
 sudo add-apt-repository -y ppa:ethereum/ethereum
