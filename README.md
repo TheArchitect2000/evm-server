@@ -83,9 +83,9 @@ sudo nano genesis.json
   }
 }
 ```
-  - _chainId_: 706883 is FidesInnova chain ID.<br>
-  - _period_: Block time in seconds.<br>
-  - _extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.<br>
+  -- _chainId_: 706883 is FidesInnova chain ID.<br>
+  -- _period_: Block time in seconds.<br>
+  -- _extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.<br>
   - _alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
 <b> Note: If you are a Node owner, contact FidesInnova team at info@fidesinnova.io to add your wallet address to the genesis file.</b>
 - Start the Blockchain
