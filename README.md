@@ -18,9 +18,8 @@ To connect to the FidesInnova blockchain, you need to set up a node, configure i
 
 
 ## 1- Fidesinnova Blockchain Node (General Node) - RPC Provider
-### 1-1 Install geth
-Install ethereum V1.13.x
-copy the URL for your system from https://geth.ethereum.org/downloads
+- Install Ethereum V1.13.x
+- Copy the URL for your system from https://geth.ethereum.org/downloads
 ```
 wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.13.15-c5ba367e.tar.gz
 tar -xvf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
@@ -38,23 +37,22 @@ sudo apt-get update
 sudo apt-get install ethereum
 sudo apt-get upgrade geth
 ```--->
-### 1-2 New account
-#### 1-2-1 Creating a new account
+- Create a new account
 ```
 cd ~/
 mkdir fides_blockchain
 geth --datadir fides_blockchain account new
 ```
-The output should look like this:
+- The output should look like this:
 `Public address of the key:   0xfBDfF421004493e13A4a69394c3b98f1e44C9874
 Path of the secret key file: fides_blockchain/keystore/UTC--2024-02-27T16-17-52.880254508Z--fbdff421004493e13a4a69394c3b98f1e44c9874`
 
-### 1-3 Create the genesis file
+- Create the genesis file
 ```
 cd ~/
 sudo nano genesis.json
 ```
-Copy and paste the file content from below and then edit the genesis
+- Copy and paste the file content from below and then edit the genesis
 ```
 {
   "config": {
@@ -89,17 +87,17 @@ _extradata_: To encode the signer addresses in extra data, concatenate 32 zero b
 
 _alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
 
-### 1-4 Start the Blockchain
+- Start the Blockchain
 ```
 geth --datadir fides_blockchain init genesis.json
 ```
 
-Open a `screen` to run the node in background:
+- Open a `screen` to run the node in background:
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "web3,eth,txpool,personal,net,network" --ws.api "eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
 ```
 
-### 1-5 Connect to Peer Nodes in Fidesinnova Blockchain
+- Connect to Peer Nodes in Fidesinnova Blockchain
 In the second node geth console, enter the enode address of the main node by this command : `admin.addPeer("enode/path@ip:port")`
 
 ```
@@ -107,10 +105,8 @@ admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386
 ```
 
 ## 2- Fidesinnova Blockchain Node (Validator Node) - Block Producer
-### 2-1- Install geth
-Install ethereum V1.13.x
-copy the URL for your system from https://geth.ethereum.org/downloads
-
+- Install Ethereum V1.13.x
+- Copy the URL for your system from https://geth.ethereum.org/downloads
 ```
 wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.13.15-c5ba367e.tar.gz
 tar -xvf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
@@ -128,30 +124,26 @@ sudo apt-get update
 sudo apt-get install ethereum
 sudo apt-get upgrade geth
 ```
-### 2-2 New account
-#### 2-2-1 Creating a new account
+- Creating a new account
 ```
 cd ~/
 mkdir fides_blockchain
 geth --datadir fides_blockchain account new
 ```
-The output should look like this:
+- The output should look like this:
 `Public address of the key:   0xfBDfF421004493e13A4a69394c3b98f1e44C9874
 Path of the secret key file: fides_blockchain/keystore/UTC--2024-02-27T16-17-52.880254508Z--fbdff421004493e13a4a69394c3b98f1e44c9874`
-
-
-#### 2-2-2 Save the password
+- Save the password
 ```
 sudo nano fides_blockchain/password.sec
 ```
-Enter the account password and then save and exit the file.
-
-### 2-3 Create the genesis file
+- Enter the account password and then save and exit the file.
+- Create the genesis file
 ```
 cd ~/
 sudo nano genesis.json
 ```
-Copy and paste the file content from below and then edit the genesis
+- Copy and paste the file content from below and then edit the genesis
 ```
 {
   "config": {
@@ -187,62 +179,47 @@ _extradata_: To encode the signer addresses in extra data, concatenate 32 zero b
 _alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
 
 <b> Note: If you are a Node owner, contact Fidesinnova team at info@fidesinnova.io to add your wallet address to the genesis file.</b>
-  
-
-### 2-4 Syncing the Blockchain
-#### 2-4-1 Start the Blockchain
+- Start the Blockchain
 ```
 geth --datadir fides_blockchain init genesis.json
 ```
-#### 2-4-2 Use this command to start syncing with the blockchain
+- start syncing with the blockchain
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "web3,eth,txpool,personal,net,network" --ws.api "eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
 ```
-
-#### 2-4-3 In the node geth console, enter the enode address of the main node like: `admin.addPeer("enode/path@ip:port")`
+- In the node geth console, enter the enode address of the main node like: `admin.addPeer("enode/path@ip:port")`
 ```
 admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
 ```
-
-#### 2-4-4 Verify Block Progress
-Open the Geth console and use the following command:
+- Verify Block Progress: Open the Geth console and use the following command:
 ```
 eth.syncing
 ```
 Note: When the node is not synchronized, it returns false, and when it is fully synchronized, it returns true.
-
-#### 2-4-5 Check Syncing Status
-To track the number of blocks your node has synced, run:
+- Check Syncing Status: To track the number of blocks your node has synced, run:
 ```
 eth.blockNumber
 ```
 Note: This command displays the current synchronized block number on your node, providing progress information about the synchronization process.
-
-#### 2-4-6 After the node synced with the blockchain
-Use this command to stop the blockchain node and then start the miner.
+- Use this command to stop the blockchain node and then start the miner.
 ```
 exit
 ```
-
-### 2-5 Start the Miner
+- Start the Miner
 Open a `screen` to run the node in background:<br>
 <b>Note: Make sure to replace your **wallet address** in the command.</b>
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
 ```
-
-### 2-6 Connect to Peer Nodes in Fidesinnova Blockchain
+- Connect to Peer Nodes in Fidesinnova Blockchain
 In the node geth console, enter the enode address of the main node like: `admin.addPeer("enode/path@ip:port")`
 ```
 admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
 ```
 <p></p>
 
-
-## 3- Setting Up nginx (Optional)
-<b> Note: This section is only required if you want to create your own second node with global RPC access.</b>
-
-### 3-1- Install nginx
+## Optional: Install nginx
+- This section is only required if you want to create your own second node with global RPC access.
 ```
 sudo apt install nginx
 ```
@@ -370,32 +347,22 @@ http {
 
 	}
 --->
-
-
-
-### 3-2 How to take SSL by certbot 
+- Get an SSL vertififcate using certbot 
 ```
 sudo apt-get update
 sudo apt-get install certbot
 sudo certbot certonly --standalone --preferred-challenges http
 ```
 <b> Then enter your URL like: `fidesf1-rpc.fidesinnova.io` </b>
-
-<!---
-<b> Then enter your URL like: `fidesf1-rpc.fidesinnova.io fidesf1-explorer.fidesinnova.io` </b>
---->
-
-### 3-3 Start nginx
-Test nginx config
+- Test nginx config
 ```
 nginx -t
 ```
-And then use systemctl to start nginx
+- Start nginx
 ```
 systemctl restart nginx
 ```
-
-## Useful Commands (optional)
+- Useful Commands (optional)
 ```
 apt update
 apt install screen
