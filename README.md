@@ -17,94 +17,7 @@ To connect to the FidesInnova blockchain, you need to set up a node, configure i
 <p><b>Validator Node:</b> Actively participates in the consensus mechanism by validating transactions and securing the network.</p>
 
 
-## 1- Fidesinnova Blockchain Node (General Node) - RPC Provider
-- Install Ethereum V1.13.x
-- Copy the URL for your system from https://geth.ethereum.org/downloads
-```
-wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.13.15-c5ba367e.tar.gz
-tar -xvf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
-cd geth-linux-amd64-1.13.15-c5ba367e
-chmod +x geth
-sudo cp geth /usr/local/bin/
-geth version
-```
-
-<!---
-Version 1.14 is only for PoS
-```
-sudo add-apt-repository -y ppa:ethereum/ethereum
-sudo apt-get update
-sudo apt-get install ethereum
-sudo apt-get upgrade geth
-```--->
-- Create a new account
-```
-cd ~/
-mkdir fides_blockchain
-geth --datadir fides_blockchain account new
-```
-- The output should look like this:
-`Public address of the key:   0xfBDfF421004493e13A4a69394c3b98f1e44C9874
-Path of the secret key file: fides_blockchain/keystore/UTC--2024-02-27T16-17-52.880254508Z--fbdff421004493e13a4a69394c3b98f1e44c9874`
-
-- Create the genesis file
-```
-cd ~/
-sudo nano genesis.json
-```
-- Copy and paste the file content from below and then edit the genesis
-```
-{
-  "config": {
-    "chainId": 706883,
-    "homesteadBlock": 0,
-    "eip150Block": 0,
-    "eip155Block": 0,
-    "eip158Block": 0,
-    "byzantiumBlock": 0,
-    "constantinopleBlock": 0,
-    "petersburgBlock": 0,
-    "clique": {
-      "period": 4,
-      "epoch": 7500
-    }
-  },
-  "difficulty": "1",
-  "gasLimit": "8000000",
-  "extradata": "0x000000000000000000000000000000000000000000000000000000000000000029807771835E7a8Ea638cD44BA8F417A683803270000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-  "alloc": {
-    "29807771835E7a8Ea638cD44BA8F417A68380327": {
-      "balance": "1000000000000000000000000000"
-    }
-  }
-}
-```
-_chainId_: 706883 is FidesInnova chain ID.<br>
-
-_period_: Block time in seconds.<br>
-
-_extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.<br>
-
-_alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
-
-- Start the Blockchain
-```
-geth --datadir fides_blockchain init genesis.json
-```
-
-- Open a `screen` to run the node in background:
-```
-geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "web3,eth,txpool,personal,net,network" --ws.api "eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
-```
-
-- Connect to Peer Nodes in Fidesinnova Blockchain
-In the second node geth console, enter the enode address of the main node by this command : `admin.addPeer("enode/path@ip:port")`
-
-```
-admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
-```
-
-## 2- Fidesinnova Blockchain Node (Validator Node) - Block Producer
+## 1- Fidesinnova Blockchain Node (Validator Node) - Block Producer
 - Install Ethereum V1.13.x
 - Copy the URL for your system from https://geth.ethereum.org/downloads
 ```
@@ -218,8 +131,96 @@ admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386
 ```
 <p></p>
 
-## Optional: Install nginx
+## 2- Fidesinnova Blockchain Node (General Node) - RPC Provider
+- Install Ethereum V1.13.x
+- Copy the URL for your system from https://geth.ethereum.org/downloads
+```
+wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.13.15-c5ba367e.tar.gz
+tar -xvf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
+cd geth-linux-amd64-1.13.15-c5ba367e
+chmod +x geth
+sudo cp geth /usr/local/bin/
+geth version
+```
+
+<!---
+Version 1.14 is only for PoS
+```
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
+sudo apt-get upgrade geth
+```--->
+- Create a new account
+```
+cd ~/
+mkdir fides_blockchain
+geth --datadir fides_blockchain account new
+```
+- The output should look like this:
+`Public address of the key:   0xfBDfF421004493e13A4a69394c3b98f1e44C9874
+Path of the secret key file: fides_blockchain/keystore/UTC--2024-02-27T16-17-52.880254508Z--fbdff421004493e13a4a69394c3b98f1e44c9874`
+
+- Create the genesis file
+```
+cd ~/
+sudo nano genesis.json
+```
+- Copy and paste the file content from below and then edit the genesis
+```
+{
+  "config": {
+    "chainId": 706883,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "clique": {
+      "period": 4,
+      "epoch": 7500
+    }
+  },
+  "difficulty": "1",
+  "gasLimit": "8000000",
+  "extradata": "0x000000000000000000000000000000000000000000000000000000000000000029807771835E7a8Ea638cD44BA8F417A683803270000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "alloc": {
+    "29807771835E7a8Ea638cD44BA8F417A68380327": {
+      "balance": "1000000000000000000000000000"
+    }
+  }
+}
+```
+_chainId_: 706883 is FidesInnova chain ID.<br>
+
+_period_: Block time in seconds.<br>
+
+_extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.<br>
+
+_alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
+
+- Start the Blockchain
+```
+geth --datadir fides_blockchain init genesis.json
+```
+
+- Open a `screen` to run the node in background:
+```
+geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "web3,eth,txpool,personal,net,network" --ws.api "eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
+```
+
+- Connect to Peer Nodes in Fidesinnova Blockchain
+In the second node geth console, enter the enode address of the main node by this command : `admin.addPeer("enode/path@ip:port")`
+
+```
+admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
+```
+
+## 3. Optional
 - This section is only required if you want to create your own second node with global RPC access.
+- Install nginx
 ```
 sudo apt install nginx
 ```
