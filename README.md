@@ -17,7 +17,7 @@ To connect to the FidesInnova blockchain, you need to set up a node, configure i
 <p><b>Validator Node:</b> Actively participates in the consensus mechanism by validating transactions and securing the network.</p>
 
 
-## 1- FidesInnova - Block Producer Node - Validator
+## 1- FidesInnova Block Producer Node - Validator
 - Install Ethereum V1.13.x
 - Copy the URL for your system from https://geth.ethereum.org/downloads
 ```
