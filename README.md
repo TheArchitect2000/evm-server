@@ -243,11 +243,14 @@ admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386
 <b> Note: This section is only required if you want to create your own second node with global RPC access.</b>
 
 ### 3-1- Install nginx
-
 ```
 sudo apt install nginx
 ```
-Open `nginx.conf` from `etc/nginx/`
+- Open `nginx.conf` 
+```
+sudo nano /etc/nginx/nginx.conf
+```
+- Update the config file
 ```
 user www-data;
 worker_processes auto;
