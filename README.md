@@ -29,8 +29,8 @@ sudo cp geth /usr/local/bin/
 geth version
 rm -rf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
 ```
-- Version 1.13 is only for PoA
-- Version 1.14 is only for PoS
+- Geth version 1.13 is for PoA consensus algorithm.
+- Geth version 1.14 and higher are for PoS consensus algorithm.
 ```
 sudo add-apt-repository -y ppa:ethereum/ethereum
 sudo apt-get update
