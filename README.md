@@ -17,7 +17,7 @@ To connect to the FidesInnova blockchain, you need to set up a node, configure i
 <p><b>Validator Node:</b> Actively participates in the consensus mechanism by validating transactions and securing the network.</p>
 
 
-## 1- Fidesinnova Blockchain Node (Validator Node) - Block Producer
+## 1- FidesInnova Blockchain Node (Validator Node) - Block Producer
 - Install Ethereum V1.13.x
 - Copy the URL for your system from https://geth.ethereum.org/downloads
 ```
@@ -91,7 +91,7 @@ _extradata_: To encode the signer addresses in extra data, concatenate 32 zero b
 
 _alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
 
-<b> Note: If you are a Node owner, contact Fidesinnova team at info@fidesinnova.io to add your wallet address to the genesis file.</b>
+<b> Note: If you are a Node owner, contact FidesInnova team at info@fidesinnova.io to add your wallet address to the genesis file.</b>
 - Start the Blockchain
 ```
 geth --datadir fides_blockchain init genesis.json
@@ -124,14 +124,14 @@ Open a `screen` to run the node in background:<br>
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
 ```
-- Connect to Peer Nodes in Fidesinnova Blockchain
+- Connect to Peer Nodes in FidesInnova Blockchain
 In the node geth console, enter the enode address of the main node like: `admin.addPeer("enode/path@ip:port")`
 ```
 admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
 ```
 <p></p>
 
-## 2- Fidesinnova Blockchain Node (General Node) - RPC Provider
+## 2- FidesInnova Blockchain Node (General Node) - RPC Provider
 - Install Ethereum V1.13.x
 - Copy the URL for your system from https://geth.ethereum.org/downloads
 ```
@@ -211,7 +211,7 @@ geth --datadir fides_blockchain init genesis.json
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "web3,eth,txpool,personal,net,network" --ws.api "eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
 ```
 
-- Connect to Peer Nodes in Fidesinnova Blockchain
+- Connect to Peer Nodes in FidesInnova Blockchain
 In the second node geth console, enter the enode address of the main node by this command : `admin.addPeer("enode/path@ip:port")`
 
 ```
