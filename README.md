@@ -93,36 +93,49 @@ geth --datadir fides_blockchain init genesis.json
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "web3,eth,txpool,personal,net,network" --ws.api "eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
 ```
-- In the node geth console, enter the enode address of the main node like: `admin.addPeer("enode/path@ip:port")`
+- In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 ```
 admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
 ```
-- Verify Block Progress: Open the Geth console and use the following command:
+- Verify the blockchain syncing progress
 ```
 eth.syncing
 ```
-Note: When the node is not synchronized, it returns false, and when it is fully synchronized, it returns true.
-- Check Syncing Status: To track the number of blocks your node has synced, run:
+- When the node is not synchronized, it returns false, and when it is fully synchronized, it returns true.
+- To track the number of blocks your node has synced, run:
 ```
 eth.blockNumber
 ```
-Note: This command displays the current synchronized block number on your node, providing progress information about the synchronization process.
-- Use this command to stop the blockchain node and then start the miner.
+- No need to wait for full sync, you can exit the Geth and start the validation process.
 ```
 exit
 ```
-- Start the Miner
-Open a `screen` to run the node in background:<br>
-<b>Note: Make sure to replace your **wallet address** in the command.</b>
+- Open a `screen` to run the node in background
+```
+screen
+```
+- Press 'Enter'
+- Replace your **wallet address** in the below command, and start the validator
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
 ```
-- Connect to Peer Nodes in FidesInnova Blockchain
-In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
+- In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 ```
 admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
 ```
-<p></p>
+- Exit from the screen 'Ctrl+A', the press 'D'
+- To return to the screen (i.e., re-attach), type
+```
+screen -r
+```
+- To list all screen sessions
+```
+screen -ls
+```
+- To kill a screen session
+```
+screen -XS <sesson_id> quit
+```
 
 ## 2- FidesInnova General Node - RPC Provider
 - Install Ethereum V1.13.x
