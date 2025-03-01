@@ -118,7 +118,7 @@ Open a `screen` to run the node in background:<br>
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
 ```
 - Connect to Peer Nodes in FidesInnova Blockchain
-In the node geth console, enter the enode address of the main node like: `admin.addPeer("enode/path@ip:port")`
+In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 ```
 admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
 ```
