@@ -85,7 +85,7 @@ sudo nano genesis.json
 ```
   clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
 ```
-- Start the Blockchain
+- Initialize the blockchain with block 0 using the following command
 ```
 geth --datadir fides_blockchain init genesis.json
 ```
