@@ -81,8 +81,10 @@ sudo nano genesis.json
   - _period_: Block time in seconds.<br>
   - _extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.<br>
   - _alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
-<b> Note: If you are a Node owner, contact FidesInnova team at info@fidesinnova.io to add your wallet address to the blockchain of the majority of the validator nodes.</b>
-
+- Note: If you are a new Validator node, please contact FidesInnova team at info@fidesinnova.io to add your public address (i.e., wallet address) to the blockchain of the majority of the validator nodes in the network. Other validator nodes should use the following commands to add your node to their network. In the 'screen' that the validator node is running, type:
+```
+  clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
+```
 - Start the Blockchain
 ```
 geth --datadir fides_blockchain init genesis.json
