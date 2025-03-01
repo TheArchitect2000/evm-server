@@ -85,7 +85,7 @@ sudo nano genesis.json
 ```
   clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
 ```
-  - like
+   - like
 ```
 clique.propose("0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9", true)
 ```
