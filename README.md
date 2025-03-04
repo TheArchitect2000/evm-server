@@ -87,7 +87,10 @@ sudo nano genesis.json
 ```
    - like
 ```
-clique.propose("0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9", true)
+---Hetzner
+clique.propose("0x29807771835e7a8ea638cd44ba8f417a68380327", true) 
+---Amazon
+clique.propose(“0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9", true) 
 ```
 
 - Initialize the blockchain with block 0 using the following command
@@ -100,7 +103,9 @@ geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.i
 ```
 - In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 ```
-admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
+---Amazon
+admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.191.218.167:3000")
+
 ```
 - Verify the blockchain syncing progress
 ```
@@ -126,7 +131,7 @@ geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.i
 ```
 - In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 ```
-admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
+admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.191.218.167:3000")
 ```
 - Exit from the screen 'Ctrl+A', the press 'D'
 - To return to the screen (i.e., re-attach), type
