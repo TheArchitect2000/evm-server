@@ -229,7 +229,7 @@ In the second node geth console, enter the enode address of the main node by thi
 admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
 ```
 
-## This section is only required if you want to create your own second node with global RPC access.
+## This section is only required if you want to create your node with global RPC access.
 - Install nginx
 ```
 sudo apt install nginx
