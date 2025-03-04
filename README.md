@@ -17,7 +17,7 @@ To connect to the FidesInnova blockchain, you need to set up a node, configure i
 <p><b>Validator Node:</b> Actively participates in the consensus mechanism by validating transactions and securing the network.</p>
 
 
-## 1- FidesInnova Node - Block Generator or RPC node
+## Staring FidesInnova Node - Block Generator or RPC node
 - Install Ethereum V1.13.x
 - Copy the URL for your system from https://geth.ethereum.org/downloads
 ```
@@ -96,13 +96,13 @@ sreen
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "personal,web3,eth,txpool,personal,net,network" --ws.api "personal,eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
 ```
 - In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
+- Amazon Block Producer
 ```
----Amazon
 admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.217.214.249:3000")
 ```
 - Exit from the screen 'Ctrl+A', the press 'D'
   
-## 1- FidesInnova Block Producer Node
+## A- FidesInnova Block Producer Node
 - If you are a new Validator node, please contact FidesInnova team at info@fidesinnova.io to add your public address (i.e., wallet address) to the blockchain of the majority of the validator nodes in the network. Other validator nodes should use the following commands to add your node to their network. In the 'screen' that the validator node is running, type:
 ```
   clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
@@ -136,7 +136,7 @@ admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386
 admin.addPeer("enode://17996c16e9df2f69f9ff70a0891785f951c001e0e4923a78e59dc84ea1e99ed721dbadb976f3cb3ad05d4159c216ca05e218c027b1f423986c670af463a2bd9f@3.144.121.145:3000")
 ```
 
-## 2- FidesInnova RPC Node
+## B- FidesInnova RPC Node
 - Install nginx
 ```
 sudo apt install nginx
