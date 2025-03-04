@@ -367,11 +367,11 @@ sudo certbot certonly --standalone --preferred-challenges http
 <b> Then enter your URL like: `fidesf1-rpc.fidesinnova.io` </b>
 - Test nginx config
 ```
-nginx -t
+sudo nginx -t
 ```
 - Start nginx
 ```
-systemctl restart nginx
+sudo systemctl restart nginx
 ```
 - Useful Commands (optional)
 ```
