@@ -98,7 +98,7 @@ geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.i
 - In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 ```
 ---Amazon
-admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.191.218.167:3000")
+admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.217.214.249:3000")
 ```
 - Exit from the screen 'Ctrl+A', the press 'D'
   
@@ -123,8 +123,17 @@ screen -r
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
 ```
 - In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
+- Amazon Block Producer
 ```
-admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.191.218.167:3000")
+admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.217.214.249:3000")
+```
+- Hetzner Block Producer
+```
+admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386bf87f0c133221802427ff4483eed77e9c33731aa9b83a7f579dab54a5e5cec773ccd812@65.108.196.41:3000")
+```
+- Amazon RPC
+```
+admin.addPeer("enode://17996c16e9df2f69f9ff70a0891785f951c001e0e4923a78e59dc84ea1e99ed721dbadb976f3cb3ad05d4159c216ca05e218c027b1f423986c670af463a2bd9f@3.144.121.145:3000")
 ```
 
 ## 2- FidesInnova RPC Node
@@ -271,7 +280,8 @@ sudo nginx -t
 ```
 sudo systemctl restart nginx
 ```
-- Useful Commands (optional)
+
+## Useful Commands for troubleshooting
 ```
 apt update
 apt install screen
