@@ -17,7 +17,7 @@ To connect to the FidesInnova blockchain, you need to set up a node, configure i
 <p><b>Validator Node:</b> Actively participates in the consensus mechanism by validating transactions and securing the network.</p>
 
 
-## 1- FidesInnova Block Producer Node - Validator
+## 1- FidesInnova Node - Block Generator or RPC node
 - Install Ethereum V1.13.x
 - Copy the URL for your system from https://geth.ethereum.org/downloads
 ```
@@ -80,8 +80,30 @@ sudo nano genesis.json
   - _chainId_: 706883 is FidesInnova chain ID.<br>
   - _period_: Block time in seconds.<br>
   - _extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.<br>
-  - _alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
-- Note: If you are a new Validator node, please contact FidesInnova team at info@fidesinnova.io to add your public address (i.e., wallet address) to the blockchain of the majority of the validator nodes in the network. Other validator nodes should use the following commands to add your node to their network. In the 'screen' that the validator node is running, type:
+  - _alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block.
+  
+
+- Initialize the blockchain with block 0:
+```
+geth --datadir fides_blockchain init genesis.json
+```
+- Open a `screen` to run the node in background.
+```
+sreen
+```  
+- start syncing with the blockchain
+```
+geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "personal,web3,eth,txpool,personal,net,network" --ws.api "personal,eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
+```
+- In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
+```
+---Amazon
+admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.191.218.167:3000")
+```
+- Exit from the screen 'Ctrl+A', the press 'D'
+  
+## 1- FidesInnova Block Producer Node
+- If you are a new Validator node, please contact FidesInnova team at info@fidesinnova.io to add your public address (i.e., wallet address) to the blockchain of the majority of the validator nodes in the network. Other validator nodes should use the following commands to add your node to their network. In the 'screen' that the validator node is running, type:
 ```
   clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
 ```
@@ -92,39 +114,10 @@ clique.propose("0x29807771835e7a8ea638cd44ba8f417a68380327", true)
 ---Amazon
 clique.propose(“0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9", true) 
 ```
-
-- Initialize the blockchain with block 0 using the following command
+- Return to the `screen` which runs the node in background
 ```
-geth --datadir fides_blockchain init genesis.json
+screen -r
 ```
-- start syncing with the blockchain
-```
-geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "personal,web3,eth,txpool,personal,net,network" --ws.api "personal,eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
-```
-- In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
-```
----Amazon
-admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.191.218.167:3000")
-
-```
-- Verify the blockchain syncing progress
-```
-eth.syncing
-```
-- When the node is not synchronized, it returns false, and when it is fully synchronized, it returns true.
-- To track the number of blocks your node has synced, run:
-```
-eth.blockNumber
-```
-- No need to wait for full sync, you can exit the Geth and start the validation process.
-```
-exit
-```
-- Open a `screen` to run the node in background
-```
-screen
-```
-- Press 'Enter'
 - Replace your **wallet address** in the below command, and start the validator
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
@@ -133,106 +126,8 @@ geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.i
 ```
 admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.191.218.167:3000")
 ```
-- Exit from the screen 'Ctrl+A', the press 'D'
-- To return to the screen (i.e., re-attach), type
-```
-screen -r
-```
-- To list all screen sessions
-```
-screen -ls
-```
-- To kill a screen session
-```
-screen -XS <sesson_id> quit
-```
 
-## 2- FidesInnova General Node - RPC Provider
-- Install Ethereum V1.13.x
-- Copy the URL for your system from https://geth.ethereum.org/downloads
-```
-wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.13.15-c5ba367e.tar.gz
-tar -xvf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
-cd geth-linux-amd64-1.13.15-c5ba367e
-chmod +x geth
-sudo cp geth /usr/local/bin/
-geth version
-```
-
-<!---
-Version 1.14 is only for PoS
-```
-sudo add-apt-repository -y ppa:ethereum/ethereum
-sudo apt-get update
-sudo apt-get install ethereum
-sudo apt-get upgrade geth
-```--->
-- Create a new account
-```
-cd ~/
-mkdir fides_blockchain
-geth --datadir fides_blockchain account new
-```
-- The output should look like this:
-`Public address of the key:   0xfBDfF421004493e13A4a69394c3b98f1e44C9874
-Path of the secret key file: fides_blockchain/keystore/UTC--2024-02-27T16-17-52.880254508Z--fbdff421004493e13a4a69394c3b98f1e44c9874`
-
-- Create the genesis file
-```
-cd ~/
-sudo nano genesis.json
-```
-- Copy and paste the file content from below and then edit the genesis
-```
-{
-  "config": {
-    "chainId": 706883,
-    "homesteadBlock": 0,
-    "eip150Block": 0,
-    "eip155Block": 0,
-    "eip158Block": 0,
-    "byzantiumBlock": 0,
-    "constantinopleBlock": 0,
-    "petersburgBlock": 0,
-    "clique": {
-      "period": 4,
-      "epoch": 7500
-    }
-  },
-  "difficulty": "1",
-  "gasLimit": "8000000",
-  "extradata": "0x000000000000000000000000000000000000000000000000000000000000000029807771835E7a8Ea638cD44BA8F417A683803270000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-  "alloc": {
-    "29807771835E7a8Ea638cD44BA8F417A68380327": {
-      "balance": "1000000000000000000000000000"
-    }
-  }
-}
-```
-_chainId_: 706883 is FidesInnova chain ID.<br>
-
-_period_: Block time in seconds.<br>
-
-_extradata_: To encode the signer addresses in extra data, concatenate 32 zero bytes, all signer addresses and 65 further zero bytes. The result of this concatenation is then used as the value accompanying the extradata key in genesis.json.<br>
-
-_alloc_: Initial allocation of ether (alloc). This determines how much ether is available to the addresses listed in the genesis block. <br>
-
-- Start the Blockchain
-```
-geth --datadir fides_blockchain init genesis.json
-```
-
-- Open a `screen` to run the node in background:
-```
-geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "personal,web3,eth,txpool,personal,net,network" --ws.api "personal,eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
-```
-
-- Connect to Peer Nodes in FidesInnova Blockchain
-In the second node geth console, enter the enode address of the main node by this command : `admin.addPeer("enode/path@ip:port")`
-
-```
-admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.191.218.167:3000")
-```
+## 2- FidesInnova RPC Node
 - Install nginx
 ```
 sudo apt install nginx
@@ -385,6 +280,52 @@ screen -r
 admin.nodeInfo
 clique.propose(address, true)
 ```
+
+- Verify the blockchain syncing progress
+```
+eth.syncing
+```
+- When the node is not synchronized, it returns false, and when it is fully synchronized, it returns true.
+- To track the number of blocks your node has synced, run:
+```
+eth.blockNumber
+```
+- No need to wait for full sync, you can exit the Geth and start the validation process.
+```
+exit
+```
+
+- To return to the screen (i.e., re-attach), type
+```
+screen -r
+```
+- To list all screen sessions
+```
+screen -ls
+```
+- To kill a screen session
+```
+screen -XS <sesson_id> quit
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
