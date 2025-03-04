@@ -233,8 +233,6 @@ In the second node geth console, enter the enode address of the main node by thi
 ```
 admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.191.218.167:3000")
 ```
-
-## This section is only required if you want to create your node with global RPC access.
 - Install nginx
 ```
 sudo apt install nginx
@@ -369,7 +367,7 @@ sudo apt-get update
 sudo apt-get install certbot
 sudo certbot certonly --standalone --preferred-challenges http
 ```
-<b> Then enter your URL like: `fidesf1-rpc.fidesinnova.io` </b>
+- Enter your RPC URL like: `rpc1.fidesinnova.io`
 - Test nginx config
 ```
 sudo nginx -t
@@ -387,6 +385,10 @@ screen -r
 admin.nodeInfo
 clique.propose(address, true)
 ```
+
+
+
+
 
 
 <!---
