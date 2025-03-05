@@ -286,32 +286,11 @@ screen -d
 screen -r
 admin.nodeInfo
 clique.propose(address, true)
-```
-
-- Verify the blockchain syncing progress
-```
 eth.syncing
-```
-- When the node is not synchronized, it returns false, and when it is fully synchronized, it returns true.
-- To track the number of blocks your node has synced, run:
-```
 eth.blockNumber
-```
-- No need to wait for full sync, you can exit the Geth and start the validation process.
-```
 exit
-```
-
-- To return to the screen (i.e., re-attach), type
-```
 screen -r
-```
-- To list all screen sessions
-```
 screen -ls
-```
-- To kill a screen session
-```
 screen -XS <sesson_id> quit
 ```
 
