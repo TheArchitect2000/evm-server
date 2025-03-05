@@ -123,6 +123,10 @@ screen -r
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
 ```
+- Hetzner Block Producer
+```
+geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock 0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9 --password "fides_blockchain/password.sec" --mine --miner.etherbase 0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9 console 2> "geth.log"
+```
 - In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 - Amazon Block Producer
 ```
