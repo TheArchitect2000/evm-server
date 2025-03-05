@@ -100,7 +100,7 @@ geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.i
 ```
 admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.217.214.249:3000")
 ```
-- Exit from the screen 'Ctrl+A', the press 'D'
+- Exit from the screen 'Ctrl+a', the press 'd'
   
 ## A- FidesInnova Block Producer Node
 - If you are a new Validator node, please contact FidesInnova team at info@fidesinnova.io to add your public address (i.e., wallet address) to the blockchain of the majority of the validator nodes in the network. Other validator nodes should use the following commands to add your node to their network. In the 'screen' that the validator node is running, type:
