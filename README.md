@@ -92,7 +92,7 @@ geth --datadir fides_blockchain init genesis.json
 ## A- FidesInnova Block Producer Node
 - Open a `screen` to run the node in background.
 ```
-sreen
+screen
 ```
 - Replace your **wallet address** in the below command, and start the validator: <br>
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
