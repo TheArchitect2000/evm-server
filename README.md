@@ -94,19 +94,14 @@ geth --datadir fides_blockchain init genesis.json
 ```
 sreen
 ```
-- Replace your **wallet address** in the below command, and start the validator
-```
+- Replace your **wallet address** in the below command, and start the validator: <br>
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
-```
-- Hetzner Block Producer
+- Example: Block Producer on Amazon
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock 0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9 --password "fides_blockchain/password.sec" --mine --miner.etherbase 0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9 console 2> "geth.log"
 ```
-- If you are a new Validator node, please contact FidesInnova team at info@fidesinnova.io to add your public address (i.e., wallet address) to the blockchain of the majority of the validator nodes in the network. Other validator nodes should use the following commands to add your node to their network. In the 'screen' that the validator node is running, type:
-```
-  clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
-```
-   - Example: Block Producer on Hetzner
+- If you are a new Validator node, please contact FidesInnova team at info@fidesinnova.io to add your public address (i.e., wallet address) to the blockchain of the majority of the validator nodes in the network. Other validator nodes should use the following commands to add your node to their network. In the 'screen' that the validator node is running, type: clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
+ - Example: Block Producer on Hetzner
 ```
 clique.propose("0x29807771835e7a8ea638cd44ba8f417a68380327", true)
 ```
@@ -124,10 +119,7 @@ sreen
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "personal,web3,eth,txpool,personal,net,network" --ws.api "personal,eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
 ```
-- In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")` such as Amazon Block Producer:
-```
-admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.217.214.249:3000")
-```
+- In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 - Example: Amazon Block Producer
 ```
 admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f425c874bac1593f83336352b33ea4a6c7f6e8732547d0466e27a044d5643b35b74d0863b@18.217.214.249:3000")
