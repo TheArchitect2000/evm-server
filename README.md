@@ -87,11 +87,39 @@ sudo nano genesis.json
 ```
 geth --datadir fides_blockchain init genesis.json
 ```
+- Open port TCP 3000 on your firewall and server.
+
+## A- FidesInnova Block Producer Node
 - Open a `screen` to run the node in background.
 ```
 sreen
 ```
-- Open port TCP 3000 on your firewall and server.
+- Replace your **wallet address** in the below command, and start the validator
+```
+geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
+```
+- Hetzner Block Producer
+```
+geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock 0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9 --password "fides_blockchain/password.sec" --mine --miner.etherbase 0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9 console 2> "geth.log"
+```
+- If you are a new Validator node, please contact FidesInnova team at info@fidesinnova.io to add your public address (i.e., wallet address) to the blockchain of the majority of the validator nodes in the network. Other validator nodes should use the following commands to add your node to their network. In the 'screen' that the validator node is running, type:
+```
+  clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
+```
+   - Example: Block Producer on Hetzner
+```
+clique.propose("0x29807771835e7a8ea638cd44ba8f417a68380327", true)
+```
+ - Example: Block Producer on Amazon
+```
+clique.propose(“0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9", true) 
+```
+
+## B- FidesInnova RPC Node
+- Open a `screen` to run the node in background.
+```
+sreen
+```
 - start syncing with the blockchain
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "personal,web3,eth,txpool,personal,net,network" --ws.api "personal,eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
@@ -114,33 +142,6 @@ admin.addPeer("enode://17996c16e9df2f69f9ff70a0891785f951c001e0e4923a78e59dc84ea
 ```
 - Exit from the screen 'Ctrl+a', the press 'd'
   
-## A- FidesInnova Block Producer Node
-- If you are a new Validator node, please contact FidesInnova team at info@fidesinnova.io to add your public address (i.e., wallet address) to the blockchain of the majority of the validator nodes in the network. Other validator nodes should use the following commands to add your node to their network. In the 'screen' that the validator node is running, type:
-```
-  clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
-```
-   - Example: Block Producer on Hetzner
-```
-clique.propose("0x29807771835e7a8ea638cd44ba8f417a68380327", true)
-```
- - Example: Block Producer on Amazon
-```
-clique.propose(“0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9", true) 
-```
-- Return to the `screen` which runs the node in background
-```
-screen -r
-```
-- Replace your **wallet address** in the below command, and start the validator
-```
-geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock <INSERT_YOUR_WALLET_ADDRESS> --password "fides_blockchain/password.sec" --mine --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> console 2> "geth.log"
-```
-- Hetzner Block Producer
-```
-geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock 0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9 --password "fides_blockchain/password.sec" --mine --miner.etherbase 0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9 console 2> "geth.log"
-```
-
-## B- FidesInnova RPC Node
 - Install nginx
 ```
 sudo apt install nginx
