@@ -107,11 +107,12 @@ admin.addPeer("enode://a7e28fe1e535b1e06cb510de242ee33f4bbfa32822880bc9435c5a7f4
 ```
   clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
 ```
-   - like
+   - Block Producer on Hetzner
 ```
----Hetzner
-clique.propose("0x29807771835e7a8ea638cd44ba8f417a68380327", true) 
----Amazon
+clique.propose("0x29807771835e7a8ea638cd44ba8f417a68380327", true)
+```
+ - Block Producer on Amazon
+```
 clique.propose(“0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9", true) 
 ```
 - Return to the `screen` which runs the node in background
