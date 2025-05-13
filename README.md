@@ -16,8 +16,20 @@ To connect to the FidesInnova blockchain, you need to set up a node, configure i
 <p><b>General Node:</b> Connects to the blockchain, allowing you to interact with the network without participating in block validation.</p>
 <p><b>Validator Node:</b> Actively participates in the consensus mechanism by validating transactions and securing the network.</p>
 
+## System Requirements
 
-## Staring FidesInnova Node - Block Generator or RPC node
+To run `evm-server` reliably in a production environment, the following system specifications are recommended:
+
+- **Operating System:** Ubuntu 24.04 LTS
+- **Memory:** 16 GB RAM
+- **Storage:**
+  - **Block Generator Node:** 100 GB SSD minimum
+  - **RPC Node:** 50 GB SSD minimum
+- **CPU:** Dual-core processor (x86_64 or ARM64)
+
+Note: These requirements are based on expected workloads and may vary depending on network activity and usage patterns.
+
+## Starting FidesInnova Node - Block Generator or RPC node
 - Install Ethereum V1.13.x
 - Copy the URL for your system from https://geth.ethereum.org/downloads
 ```
