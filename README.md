@@ -194,7 +194,7 @@ clique.propose(“0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9", true)
 ## B- FidesInnova RPC Node
 - Create the following command to create a service.
 ```
-sudo nano /etc/systemd/system/fides-geth-block-producer.service
+sudo nano /etc/systemd/system/fides-geth-rpc.service
 ```
 - Add the following code to the service file. Do not forget to update your wallet address.
 ```[Unit]
@@ -234,9 +234,9 @@ WantedBy=multi-user.target
 ```
 sudo systemctl daemon-reexec
 sudo systemctl daemon-reload
-sudo systemctl enable fides-geth-block-producer
-sudo systemctl start fides-geth-block-producer
-sudo systemctl status fides-geth-block-producer
+sudo systemctl enable fides-geth-rpc
+sudo systemctl start fides-geth-rpc
+sudo systemctl status fides-geth-rpc
 tail -f /home/ubuntu/geth.log
 ```
 
