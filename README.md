@@ -415,7 +415,7 @@ http {
 --->
 - Stop Nginx 
 ```
-sudo systemctl restart nginx
+sudo systemctl stop nginx
 ```
 - Get an SSL vertififcate using certbot 
 ```
@@ -423,11 +423,6 @@ sudo apt-get update
 sudo apt-get install certbot
 sudo certbot certonly --standalone --preferred-challenges http
 ```
-- Restart Nginx 
-```
-sudo systemctl restart nginx
-```
-- Enter your RPC URL like: `rpc1.fidesinnova.io`
 - Test nginx config
 ```
 sudo nginx -t
