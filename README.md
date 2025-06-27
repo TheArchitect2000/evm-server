@@ -254,11 +254,11 @@ geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.i
 ```
 geth attach /home/ubuntu/fides_blockchain/geth.ipc
 ```
--- Get you eNode id and email it to info@fidesinnova.io and request to join the Fides Innova network:
+-- Get your eNode using the following command and email it to info@fidesinnova.io to request to join the Fides Innova network:
 ```
 admin.nodeInfo.enode
 ```
--- Receive at least one eNode from info@fidesinnova.io and add it to your server.
+-- Receive at least one eNode from info@fidesinnova.io and add it to your server using the following code.
 ```
 admin.addPeer("enode://XXXXXXXXXX")
 ```
@@ -413,11 +413,19 @@ http {
 
 	}
 --->
+- Stop Nginx 
+```
+sudo systemctl restart nginx
+```
 - Get an SSL vertififcate using certbot 
 ```
 sudo apt-get update
 sudo apt-get install certbot
 sudo certbot certonly --standalone --preferred-challenges http
+```
+- Restart Nginx 
+```
+sudo systemctl restart nginx
 ```
 - Enter your RPC URL like: `rpc1.fidesinnova.io`
 - Test nginx config
