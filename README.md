@@ -213,12 +213,12 @@ ExecStart=/usr/local/bin/geth \
   --http.port 8545 \
   --http.addr 127.0.0.1 \
   --http.corsdomain "*" \
-  --http.api "personal,web3,eth,txpool,net,network" \
+  --http.api "personal,web3,eth,txpool,net" \
   --ws \
   --ws.addr 0.0.0.0 \
   --ws.port 8546 \
   --ws.origins "*" \
-  --ws.api "personal,eth,net,web3,network,txpool" \
+  --ws.api "personal,eth,net,web3,txpool" \
   --verbosity 0 \
 
 StandardOutput=append:/home/ubuntu/geth-rpc.log
