@@ -133,22 +133,18 @@ ExecStart=/usr/local/bin/geth \
   --port 3000 \
   --ipcpath /home/ubuntu/fides_blockchain/geth.ipc \
   --networkid 706883 \
-  --unlock <INSERT_YOUR_WALLET_ADDRESS> \
+  --unlock 0xCFCA97E9f5a9995A951E33756c7eFA5411f69ac9 \
   --password /home/ubuntu/fides_blockchain/password.sec \
   --mine \
-  --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> \
+  --miner.etherbase 0xCFCA97E9f5a9995A951E33756c7eFA5411f69ac9 \
   --http \
   --http.addr 0.0.0.0 \
   --http.port 8545 \
   --http.api personal,eth,net,web3 \
   --http.corsdomain "*" \
-  --http.vhosts=* \
-  --allow-insecure-unlock \
-  --ws \
-  --ws.addr 0.0.0.0 \
-  --ws.port 8546 \
-  --ws.api personal,eth,net,web3 \
-  --ws.origins "*"
+  --http.vhosts "*" \
+  --allow-insecure-unlock
+  console
 
 StandardOutput=append:/home/ubuntu/geth.log
 StandardError=append:/home/ubuntu/geth-error.log
