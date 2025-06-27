@@ -192,6 +192,55 @@ clique.propose(“0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9", true)
 ```
 
 ## B- FidesInnova RPC Node
+- Create the following command to create a service.
+```
+sudo nano /etc/systemd/system/fides-geth-block-producer.service
+```
+- Add the following code to the service file. Do not forget to update your wallet address.
+```[Unit]
+Description=Fides Geth RPC Node
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+ExecStart=/usr/local/bin/geth \
+  --datadir /home/ubuntu/fides_blockchain \
+  --port 3000 \
+  --ipcpath /home/ubuntu/fides_blockchain/geth.ipc \
+  --networkid 706883 \
+  --http \
+  --http.port 8545 \
+  --http.addr 127.0.0.1 \
+  --http.corsdomain "*" \
+  --http.api "personal,web3,eth,txpool,net,network" \
+  --ws \
+  --ws.addr 0.0.0.0 \
+  --ws.port 8546 \
+  --ws.origins "*" \
+  --ws.api "personal,eth,net,web3,network,txpool" \
+  --verbosity 0 \
+  console
+StandardOutput=append:/home/ubuntu/geth-rpc.log
+StandardError=append:/home/ubuntu/geth-rpc-error.log
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+- Enable the service and check its status.
+```
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable fides-geth-block-producer
+sudo systemctl start fides-geth-block-producer
+sudo systemctl status fides-geth-block-producer
+tail -f /home/ubuntu/geth.log
+```
+
+<!--
 - Open a `screen` to run the node in background.
 ```
 sreen
@@ -200,6 +249,8 @@ sreen
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "personal,web3,eth,txpool,personal,net,network" --ws.api "personal,eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
 ```
+-->
+
 - In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 - Example: Amazon Block Producer
 ```
