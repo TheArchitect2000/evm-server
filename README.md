@@ -240,7 +240,7 @@ sudo systemctl status fides-geth-block-producer
 tail -f /home/ubuntu/geth.log
 ```
 
-<!--
+
 - Open a `screen` to run the node in background.
 ```
 sreen
@@ -249,7 +249,7 @@ sreen
 ```
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883 --http --http.port 8545 --http.addr 127.0.0.1 --http.corsdomain "*" --http.api "personal,web3,eth,txpool,personal,net,network" --ws.api "personal,eth,net,web3,network,txpool" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.origins "*" --verbosity "0" console 2> "geth.log"
 ```
--->
+
 
 - In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 - Example: Amazon Block Producer
