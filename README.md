@@ -212,7 +212,7 @@ ExecStart=/usr/local/bin/geth \
   --networkid 706883 \
   --http \
   --http.port 8545 \
-  --http.addr 127.0.0.1 \
+  --http.addr 0.0.0.0 \
   --http.corsdomain "*" \
   --http.api "personal,web3,eth,txpool,net,network" \
   --ws \
