@@ -250,6 +250,24 @@ geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.i
 ```
 -->
 
+- Connect to the geth process.
+```
+geth attach /home/ubuntu/fides_blockchain/geth.ipc
+```
+-- Get you eNode id and email it to info@fidesinnova.io and request to join the Fides Innova network:
+```
+admin.nodeInfo.enode
+```
+-- Receive at least one eNode from info@fidesinnova.io and add it to your server.
+```
+admin.addPeer("enode://XXXXXXXXXX")
+```
+-- Check if you are connected to the Fides Innova correctly.
+```
+admin.peers
+```
+
+<!--
 - In the node geth console, enter the enode address of the other nodes (a validator node or a general node) like: `admin.addPeer("enode/path@ip:port")`.
 - Example: Amazon Block Producer
 ```
@@ -264,6 +282,8 @@ admin.addPeer("enode://d23933dbde1faffbf6b6c16b6f3b143754803b5f03990551701f1d386
 admin.addPeer("enode://17996c16e9df2f69f9ff70a0891785f951c001e0e4923a78e59dc84ea1e99ed721dbadb976f3cb3ad05d4159c216ca05e218c027b1f423986c670af463a2bd9f@3.144.121.145:3000")
 ```
 - Exit from the screen 'Ctrl+a', the press 'd'
+
+-->
   
 - Install nginx
 ```
