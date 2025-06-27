@@ -114,6 +114,61 @@ geth --datadir fides_blockchain init genesis.json
 - Open port TCP 3000 on your firewall and server.
 
 ## A- FidesInnova Block Producer Node
+- Create the following command to create a service.
+```
+sudo nano /etc/systemd/system/fides-geth-block-producer.service
+```
+- Add the following code to the service file. Do not forget to update your wallet address.
+```
+[Unit]
+Description=Fides Geth Block Producer Node
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+ExecStart=/usr/local/bin/geth \
+  --datadir /home/ubuntu/fides_blockchain \
+  --port 3000 \
+  --ipcpath /home/ubuntu/fides_blockchain/geth.ipc \
+  --networkid 706883 \
+  --unlock <INSERT_YOUR_WALLET_ADDRESS> \
+  --password /home/ubuntu/fides_blockchain/password.sec \
+  --mine \
+  --miner.etherbase <INSERT_YOUR_WALLET_ADDRESS> \
+  --http \
+  --http.addr 0.0.0.0 \
+  --http.port 8545 \
+  --http.api personal,eth,net,web3 \
+  --http.corsdomain "*" \
+  --http.vhosts=* \
+  --allow-insecure-unlock \
+  --ws \
+  --ws.addr 0.0.0.0 \
+  --ws.port 8546 \
+  --ws.api personal,eth,net,web3 \
+  --ws.origins "*"
+
+StandardOutput=append:/home/ubuntu/geth.log
+StandardError=append:/home/ubuntu/geth-error.log
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+- Enable the service and check its status.
+```
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable fides-geth-block-producer
+sudo systemctl start fides-geth-block-producer
+sudo systemctl status fides-geth-block-producer
+tail -f /home/ubuntu/geth.log
+```
+
+<!--
 - Open a `screen` to run the node in background.
 ```
 screen
@@ -126,6 +181,8 @@ geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.i
 sudo chown ubuntu:ubuntu fides_blockchain/keystore/*
 geth --datadir "fides_blockchain" --port 3000 --ipcpath "fides_blockchain/geth.ipc" --networkid 706883  --unlock 0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9 --password "fides_blockchain/password.sec" --mine --miner.etherbase 0x5E24E2fe8DCceA9a7A4CaC1a5fa10f43700635E9 console 2> "geth.log"
 ```
+-->
+
 - If you are a new Validator node, please contact FidesInnova team at info@fidesinnova.io to add your public address (i.e., wallet address) to the blockchain of the majority of the validator nodes in the network. Other validator nodes should use the following commands to add your node to their network. In the 'screen' that the validator node is running, type: clique.propose(<THE NEW NODE PUBLIC ADDRESS>, true)
   
 - Example: Block Producer on Hetzner
