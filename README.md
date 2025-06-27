@@ -34,12 +34,24 @@ Note: These requirements are based on expected workloads and may vary depending 
 - Copy the URL for your system from https://geth.ethereum.org/downloads
 ```
 wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.13.15-c5ba367e.tar.gz
+or 
+wget https://gethstore.blob.core.windows.net/builds/geth-linux-arm64-1.13.15-c5ba367e.tar.gz
+
 tar -xvf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
+or
+tar -xvf geth-linux-arm64-1.13.15-c5ba367e.tar.gz
+
 cd geth-linux-amd64-1.13.15-c5ba367e
+or
+cd geth-linux-arm64-1.13.15-c5ba367e
+
 chmod +x geth
 sudo cp geth /usr/local/bin/
 geth version
+
 rm -rf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
+or
+rm -rf geth-linux-arm64-1.13.15-c5ba367e.tar.gz
 ```
 - Geth version 1.13 is for PoA consensus algorithm.
 - Creating a new account
