@@ -144,7 +144,6 @@ ExecStart=/usr/local/bin/geth \
   --http.corsdomain "*" \
   --http.vhosts "*" \
   --allow-insecure-unlock
-  console
 
 StandardOutput=append:/home/ubuntu/geth.log
 StandardError=append:/home/ubuntu/geth-error.log
@@ -221,7 +220,7 @@ ExecStart=/usr/local/bin/geth \
   --ws.origins "*" \
   --ws.api "personal,eth,net,web3,network,txpool" \
   --verbosity 0 \
-  console
+
 StandardOutput=append:/home/ubuntu/geth-rpc.log
 StandardError=append:/home/ubuntu/geth-rpc-error.log
 Restart=always
