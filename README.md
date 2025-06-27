@@ -417,7 +417,7 @@ http {
 ```
 sudo systemctl stop nginx
 ```
-- Get an SSL vertififcate using certbot 
+- Get an SSL certififcate using certbot 
 ```
 sudo apt-get update
 sudo apt-get install certbot
@@ -431,44 +431,40 @@ sudo nginx -t
 ```
 sudo systemctl restart nginx
 ```
+- Check your RPC server using the following code in Google Colab
+```
+# Python code to test the RPC server
+!install pip web3
+from web3 import Web3
+
+# Replace with the actual FidesInnova RPC endpoint with your RPC name
+#fides_rpc_url = "https://rpc1.fidesinnova.io"
+
+try:
+    # Connect to the RPC server
+    w3 = Web3(Web3.HTTPProvider(fides_rpc_url))
+
+    # Check if connected
+    if w3.is_connected():
+        print(f"Successfully connected to FidesInnova RPC at: {fides_rpc_url}")
+        # You can now interact with the blockchain using the w3 object
+        # For example, get the latest block number:
+        latest_block = w3.eth.block_number
+        print(f"Latest block number: {latest_block}")
+    else:
+        print(f"Failed to connect to FidesInnova RPC at: {fides_rpc_url}")
+
+except Exception as e:
+    print(f"An error occurred: {e}")
+```
 
 ## Useful Commands for troubleshooting
 ```
-apt update
-apt install screen
-screen -d
-screen -r
 admin.nodeInfo
 clique.propose(address, true)
 eth.syncing
 eth.blockNumber
-exit
-screen -r
-screen -ls
-screen -XS <sesson_id> quit
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
