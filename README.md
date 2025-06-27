@@ -164,7 +164,7 @@ sudo systemctl status fides-geth-block-producer
 tail -f /home/ubuntu/geth.log
 ```
 
-<!--
+<! --
 - Open a `screen` to run the node in background.
 ```
 screen
