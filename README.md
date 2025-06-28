@@ -32,27 +32,27 @@ Note: These requirements are based on expected workloads and may vary depending 
 ## Starting FidesInnova Node - Block Generator or RPC node
 - Install Ethereum V1.13.x
 - Copy the URL for your system from https://geth.ethereum.org/downloads
+For **AMD64** systems
 ```
 wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.13.15-c5ba367e.tar.gz
-or 
-wget https://gethstore.blob.core.windows.net/builds/geth-linux-arm64-1.13.15-c5ba367e.tar.gz
-
 tar -xvf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
-or
-tar -xvf geth-linux-arm64-1.13.15-c5ba367e.tar.gz
-
 cd geth-linux-amd64-1.13.15-c5ba367e
-or
-cd geth-linux-arm64-1.13.15-c5ba367e
-
 chmod +x geth
 sudo cp geth /usr/local/bin/
 geth version
-
 rm -rf geth-linux-amd64-1.13.15-c5ba367e.tar.gz
-or
+```
+For **ARM64** systems
+```
+wget https://gethstore.blob.core.windows.net/builds/geth-linux-arm64-1.13.15-c5ba367e.tar.gz
+tar -xvf geth-linux-arm64-1.13.15-c5ba367e.tar.gz
+cd geth-linux-arm64-1.13.15-c5ba367e
+chmod +x geth
+sudo cp geth /usr/local/bin/
+geth version
 rm -rf geth-linux-arm64-1.13.15-c5ba367e.tar.gz
 ```
+
 - Geth version 1.13 is for PoA consensus algorithm.
 - Creating a new account
 ```
