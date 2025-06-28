@@ -32,6 +32,8 @@ Note: These requirements are based on expected workloads and may vary depending 
 ## Starting FidesInnova Node - Block Generator or RPC node
 - Install Ethereum V1.13.x
 - Copy the URL for your system from https://geth.ethereum.org/downloads
+
+
 For **AMD64** systems
 ```
 wget https://gethstore.blob.core.windows.net/builds/geth-linux-amd64-1.13.15-c5ba367e.tar.gz
